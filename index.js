@@ -29,7 +29,7 @@ import UserModel from "./models/UserModel.js";
 const DB_URL = process.env.DB_URL;
 
 mongoose
-  .connect(DB_URL)
+  .connect(process.env.DB_URL)
   .then(() => console.log("DATABASE OK"))
   .catch(() => console.log("DATABASE ERROR"));
 
@@ -39,6 +39,17 @@ app.use(express.json());
 app.use(cors());
 app.use(fileUpload());
 app.use(express.static("uploads"));
+
+
+app.get("/", async (req, res) => {
+  res.send("Home route");
+
+  const users = await UserModel.find();
+
+  return res.json({
+    users,
+  });
+});
 
 // Auth routes
 
