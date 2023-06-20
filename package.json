@@ -9,6 +9,10 @@
   "scripts": {
     "start": "nodemon index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VadymHvas/note-mern-server.git"
+  },
   "type": "module",
   "author": "Jesse Pinkman",
   "license": "ISC",
