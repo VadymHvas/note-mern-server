@@ -24,6 +24,7 @@ import {
   removeFromFavorite,
 } from "./controllers/NoteController.js";
 import { createNoteValidation } from "./validations/NoteValidation.js";
+import UserModel from "./models/UserModel.js";
 
 const DB_URL = process.env.DB_URL;
 
@@ -40,6 +41,16 @@ app.use(fileUpload());
 app.use(express.static("uploads"));
 
 // Auth routes
+
+app.get("/", async (req, res) => {
+  res.send("Home route");
+
+  const users = await UserModel.find();
+
+  return res.json({
+    users,
+  });
+});
 
 app.get("/getMe", checkAuth, getMe);
 app.post("/auth/register", registerValidation, registerUser);
