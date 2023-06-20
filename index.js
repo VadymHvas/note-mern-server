@@ -42,16 +42,6 @@ app.use(express.static("uploads"));
 
 // Auth routes
 
-app.get("/", async (req, res) => {
-  res.send("Home route");
-
-  const users = await UserModel.find();
-
-  return res.json({
-    users,
-  });
-});
-
 app.get("/getMe", checkAuth, getMe);
 app.post("/auth/register", registerValidation, registerUser);
 app.post("/auth/login", loginUser);
