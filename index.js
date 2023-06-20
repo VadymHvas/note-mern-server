@@ -28,7 +28,7 @@ import { createNoteValidation } from "./validations/NoteValidation.js";
 const DB_URL = process.env.DB_URL;
 
 mongoose
-  .connect(DB_URL)
+  .connect("mongodb+srv://VadymHvas:91158831@notesmern.w9cbscf.mongodb.net/indexDB?retryWrites=true&w=majority")
   .then(() => console.log("DATABASE OK"))
   .catch(() => console.log("DATABASE ERROR"));
 
