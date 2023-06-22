@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv/config.js";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
+import fs from "fs";
 
 export const registerUser = async (req, res) => {
     const { username, password } = req.body;
@@ -99,6 +100,10 @@ export const updateAccount = async (req, res) => {
     if (req.files) {
         let fileName = Date.now().toString() + req.files.image.name;
         const __dirname = dirname(fileURLToPath(import.meta.url));
+
+        if (!fs.existsSync("uploads")) {
+            fs.mkdirSync("uploads");
+        };
     
         req.files.image.mv(path.join(__dirname, "..", "uploads", "userAvatars", fileName));
 
