@@ -37,7 +37,9 @@ mongoose
 const app = express();
 
 if (!fs.existsSync("uploads")) {
-    fs.mkdir("uploads");
+    fs.mkdir("uploads", { recursive: true }, err => {
+      console.log(err);
+    });
 };
 
 app.use(express.json());
