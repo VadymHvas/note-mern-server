@@ -64,6 +64,21 @@ app.post("/note/deleteNote", checkAuth, deleteNote);
 app.post("/note/addFavorite", checkAuth, addToFavorite);
 app.post("/note/removeFavorite", checkAuth, removeFromFavorite);
 
+app.get("/uploads/:img", (req, res) => {
+  const { img } = req.params;
+
+  fs.readdir("uploads", (err, files) => {
+    if (files.includes(img)) {
+      return res.send(`
+        <img src='/${img}' />
+      `);
+    } else {
+      console.log(`Файл ${img} не знайдено у директорії`);
+    }
+  });
+});
+
+
 app.listen(4444, () => {
   console.log("SERVER OK");
 });
