@@ -35,6 +35,10 @@ mongoose
 
 const app = express();
 
+if (!fs.existsSync("uploads")) {
+    fs.mkdirSync("uploads");
+};
+
 app.use(express.json());
 app.use(cors());
 app.use(fileUpload());
