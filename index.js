@@ -70,7 +70,7 @@ app.get("/uploads/:img", (req, res) => {
   fs.readdir("uploads", (err, files) => {
     if (files.includes(img)) {
       return res.send(`
-        <img src='/${img}' />
+        <img src=
       `);
     } else {
       console.log(`Файл ${img} не знайдено у директорії`);
