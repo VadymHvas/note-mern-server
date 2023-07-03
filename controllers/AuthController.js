@@ -4,7 +4,6 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv/config.js";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
-import fs from "fs";
 
 export const registerUser = async (req, res) => {
     const { username, password } = req.body;
