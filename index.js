@@ -13,6 +13,7 @@ import {
 import { checkAuth } from "./middlewares/CheckAuth.js";
 import dotenv from "dotenv/config";
 import cors from "cors";
+import fs from "fs";
 import fileUpload from "express-fileupload";
 import {
   addToFavorite,
