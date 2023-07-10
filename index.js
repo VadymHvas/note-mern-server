@@ -15,6 +15,7 @@ import dotenv from "dotenv/config";
 import cors from "cors";
 import fs from "fs";
 import fileUpload from "express-fileupload";
+import path from "path";
 import {
   addToFavorite,
   createNote,
@@ -67,13 +68,15 @@ app.post("/note/removeFavorite", checkAuth, removeFromFavorite);
 app.get("/uploads/:img", (req, res) => {
   const { img } = req.params;
 
+  const imgPath = path.join(__dirname, img);
+
   fs.readdir("uploads", (err, files) => {
     if (files.includes(img)) {
       return res.send(`
-        <img src=
+        <img src=${imgPath} />
       `);
     } else {
-      console.log(`Файл ${img} не знайдено у директорії`);
+      console.log(`Файл ${imgPath} не знайдено у директорії`);
     }
   });
 });
