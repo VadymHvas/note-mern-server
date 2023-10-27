@@ -70,7 +70,7 @@ app.get("/uploads/:img", (req, res) => {
 
   const imgPath = path.join(__dirname, img);
 
-  fs.readdir("uploads", (err, files) => {
+  fs.readdir("./uploads/userAvatars", (err, files) => {
     if (files.includes(img)) {
       return res.send(`
         <img src=${imgPath} />
